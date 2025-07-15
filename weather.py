@@ -8,20 +8,6 @@ API_KEY = os.getenv("API_KEY_W")
 city = "seoul"
 url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={API_KEY}&units=metric"
 
-
-if response.status_code != 200:
-    print(f"API 요청 실패: 상태 코드 {response.status_code}")
-    print(response.text)
-    exit(1)
-
-result = response.json()
-
-# 응답 내 'main' 키가 있는지 확인
-if "main" not in result:
-    print("API 응답에 'main' 키가 없습니다. 응답 내용:")
-    print(result)
-    exit(1)
-
 response = requests.get(url)
 result = response.json()
 
