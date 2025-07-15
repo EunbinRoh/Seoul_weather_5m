@@ -4,6 +4,9 @@ import os # 폴더 생성
 from datetime import datetime # 시간변환
 
 API_KEY = os.getenv("API_KEY_W")
+if not API_KEY:
+    raise ValueError("API_KEY_W 환경 변수가 설정되지 않았습니다.")
+
 city = "seoul"
 url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={API_KEY}&units=metric"
 response = requests.get(url)
